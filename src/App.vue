@@ -1,20 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <AppHeader />
+    <AppSidebar />
     <router-view/>
   </div>
 </template>
 
+<script>
+import AppHeader from '@/components/Header'
+import AppSidebar from '@/components/Sidebar'
+
+export default {
+  components: {
+    AppHeader,
+    AppSidebar
+  }
+}
+</script>
+
+
 <style lang="scss">
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+   font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   text-align: center;
+   color: #2c3e50;
+   background-color: #e8eef1;
+   min-height: 100vh;
 }
 
 #nav {
