@@ -1,6 +1,6 @@
 <template>
    <div>
-      <component :is="currentComponent" :employeeID="employeeID"></component>
+      <component :is="currentComponent" :employeeID="employeeID" :key="updateComponent"></component>
    </div>
 </template>
 
@@ -16,7 +16,6 @@ export default {
       }
    },
    created() {
-      
       this.employeeID = this.$route.params && Object.keys(this.$route.params).length === 0 && this.$route.params.constructor === Object ? null : this.$route.params.employeeID
 
       if (this.isAddEmployee) {
@@ -30,12 +29,21 @@ export default {
       return {
          employeeID: null,
          currentComponent: null,
-
+         updateComponent: 1
       }
    },
-   methods: {
-      
-   }
+   watch: {
+    $route(to) {
+       console.log(to)
+      if (to.name === 'AddEmployee') {
+         this.currentComponent = () => import(/* webpackPrefetch: true */ '../components/AddEmployee')
+      }
+      if (to.name === 'EditEmployee') {
+         this.currentComponent = () => import(/* webpackPrefetch: true */ '../components/EditEmployee')
+      }
+      this.updateComponent++
+    }
+  }
 }
 </script>
 

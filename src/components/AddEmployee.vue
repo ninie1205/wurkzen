@@ -101,11 +101,11 @@ export default {
          }
       },
       createEmployee() {
-         axios.post('https://devapi.wurkzen.com/v1/employee', {
+         axios.post('https://devapi.wurkzen.com/v1/client/1/employee', {
             address1: this.address1,
             address2: this.address2,
             city: this.city,
-            client_id: 3,
+            client_id: 1,
             country_id: this.selectedCountry.id,
             email_address: this.emailAddress,
             first_name: this.firstName,

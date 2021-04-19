@@ -86,7 +86,7 @@ export default {
          })
          .finally( () => {
             if(this.employeeID) {
-               axios.get(`https://devapi.wurkzen.com/v1/employee/${this.employeeID}`)
+               axios.get(`https://devapi.wurkzen.com/v1/client/1/employee/${this.employeeID}`)
                .then( (response) => {
                   this.title = response.data.title,
                   this.firstName = response.data.first_name,
@@ -136,11 +136,11 @@ export default {
          }
       },
       updateEmployee() {
-         axios.put(`https://devapi.wurkzen.com/v1/employee/${this.employeeID} `, {
+         axios.put(`https://devapi.wurkzen.com/v1/client/1/employee/${this.employeeID} `, {
             address1: this.address1,
             address2: this.address2,
             city: this.city,
-            client_id: 3,
+            client_id: 1,
             country_id: this.selectedCountry.id,
             email_address: this.emailAddress,
             first_name: this.firstName,
@@ -152,6 +152,9 @@ export default {
          })
          .then( () => {
             this.$router.push({ path: '/' })
+         })
+         .catch((err) => {
+            console.log(err)
          })
       }
    }
